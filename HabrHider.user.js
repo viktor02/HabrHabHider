@@ -1,8 +1,8 @@
 // ==UserScript==
-// @name         HabrHabHider
+// @name         HabrHider
 // @namespace    http://vitka-k.ru
 // @version      0.2.0
-// @description  Скрывает посты от неугодных вам хабов на главной
+// @description  Скрывайте посты от неугодных вам хабов и блогов на главной, новости, партнерские посты и спонсорские материалы!
 // @author       Viktor Karpov <vitka-k.ru>
 // @license      MIT
 // @match        https://habr.com/ru/top/
@@ -25,7 +25,7 @@ GM_registerMenuCommand('Settings', () => {
 
 GM_config.init(
     {
-        'id': 'HabrHabHider',
+        'id': 'HabrHider',
         'fields':
             {
                 'habs':
