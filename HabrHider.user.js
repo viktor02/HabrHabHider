@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         HabrHider
 // @namespace    http://vitka-k.ru
-// @version      0.2.0
+// @version      0.2.1
 // @description  Скрывайте посты от неугодных вам хабов и блогов на главной, новости, партнерские посты и спонсорские материалы!
 // @author       Viktor Karpov <vitka-k.ru>
 // @license      MIT
