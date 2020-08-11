@@ -8,6 +8,7 @@
 // @match        https://habr.com/ru/top/
 // @grant        GM_getValue
 // @grant        GM_setValue
+// @grant        GM_openInTab
 // @grant        GM_registerMenuCommand
 // @require      https://openuserjs.org/src/libs/sizzle/GM_config.js
 // ==/UserScript==
