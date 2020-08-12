@@ -4,7 +4,9 @@
 // @version      0.2.1
 // @description  Скрывайте посты от неугодных вам хабов и блогов на главной, новости, партнерские посты и спонсорские материалы!
 // @author       Viktor Karpov <vitka-k.ru>
+// @copyright    2020, Viktor Karpov
 // @license      MIT
+// @homepageURL  https://github.com/viktor02/HabrHider
 // @match        https://habr.com/ru/top/
 // @grant        GM_getValue
 // @grant        GM_setValue
