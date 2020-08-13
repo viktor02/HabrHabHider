@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         HabrHider
 // @namespace    http://vitka-k.ru
-// @version      0.2.1
+// @version      0.2.2
 // @description  Скрывайте посты от неугодных вам хабов и блогов на главной, новости, партнерские посты и спонсорские материалы!
 // @author       Viktor Karpov <vitka-k.ru>
 // @copyright    2020, Viktor Karpov
@@ -36,7 +36,7 @@ GM_config.init(
                         'label': 'Скрыть хабы',
                         'title': 'Настройки',
                         'section': ['Настройки',
-                            'Вводите хабы в формате регулярных выражений, например так: Карьера в IT-индустрии|Блог компании <br>Внимание: пробелов между | и текстом не должно быть!'],
+                            'Вводите хабы в формате регулярных выражений, например так: <b>Карьера в IT-индустрии|Блог компании</b> <br>Внимание: пробелов между | и текстом не должно быть!'],
                         'type': 'text',
                         'default': ''
                     },
@@ -63,6 +63,12 @@ GM_config.init(
                         'label': 'Скрыть партнерские материалы',
                         'type': 'checkbox',
                         'default': false
+                    },
+                'hide_block_vacancies':
+                    {
+                        'label': 'Скрыть вакансии',
+                        'type': 'checkbox',
+                        'default': false
                     }
             }
     });
@@ -73,6 +79,7 @@ let hide_news = GM_config.get('hide_news');
 let hide_sponsors = GM_config.get('hide_sponsors');
 let hide_best_companies = GM_config.get('hide_best_companies');
 let hide_partner_materials = GM_config.get('hide_partner_materials');
+let hide_block_vacancies = GM_config.get('hide_block_vacancies');
 
 (function() {
     'use strict';
@@ -95,16 +102,20 @@ let hide_partner_materials = GM_config.get('hide_partner_materials');
         news_el.style.display = "none";
     }
     if (hide_sponsors === true){
-        let news_el = document.querySelector("div.default-block_sidebar:nth-child(1)");
-        news_el.style.display = "none";
+        let sponsors_el = document.querySelector("div.default-block_sidebar:nth-child(1)");
+        sponsors_el.style.display = "none";
     }
     if (hide_best_companies === true){
-        let news_el = document.querySelector("#companies_rating");
-        news_el.style.display = "none";
+        let companies_el = document.querySelector("#companies_rating");
+        companies_el.style.display = "none";
     }
     if (hide_partner_materials === true){
-        let news_el = document.querySelector("li.content-list__item_post:nth-child(6)");
-        news_el.style.display = "none";
+        let partner_el = document.querySelector("li.content-list__item_post:nth-child(6)");
+        partner_el.style.display = "none";
+    }
+    if (hide_block_vacancies === true){
+        let vacancies_el = document.querySelector(".promo-block_vacancies");
+        vacancies_el.parentElement.style.display = "none";
     }
 
 })();
