@@ -26,7 +26,6 @@ GM_registerMenuCommand('Settings', () => {
     GM_config.open();
 });
 
-
 GM_config.init(
     {
         'id': 'HabrHider',
@@ -59,15 +58,21 @@ GM_config.init(
                         'type': 'checkbox',
                         'default': false
                     },
-                'hide_partner_materials':
+                'hide_promo':
                     {
-                        'label': 'Скрыть партнерские материалы',
+                        'label': 'Скрыть все промоматериалы',
                         'type': 'checkbox',
                         'default': false
                     },
-                'hide_block_vacancies':
+                'hide_post_body':
                     {
-                        'label': 'Скрыть вакансии',
+                        'label': 'Показывать только заголовки',
+                        'type': 'checkbox',
+                        'default': false
+                    },
+                'improve_post_title':
+                    {
+                        'label': '(рекомендовано только при применении пред.пункта) Уменьшить заголовки',
                         'type': 'checkbox',
                         'default': false
                     }
@@ -79,8 +84,9 @@ let habs = GM_config.get('habs');
 let hide_news = GM_config.get('hide_news');
 let hide_sponsors = GM_config.get('hide_sponsors');
 let hide_best_companies = GM_config.get('hide_best_companies');
-let hide_partner_materials = GM_config.get('hide_partner_materials');
-let hide_block_vacancies = GM_config.get('hide_block_vacancies');
+let hide_promo = GM_config.get('hide_promo');
+let hide_post_body = GM_config.get('hide_post_body');
+let improve_post_title = GM_config.get('improve_post_title');
 
 (function() {
     'use strict';
@@ -94,29 +100,47 @@ let hide_block_vacancies = GM_config.get('hide_block_vacancies');
             break
         }
         else if (elementText.search(habs) !== -1){
-            element.parentElement.parentElement.style.display = "none";
+            element.parentNode.parentNode.style.display = "none";
         }
     }
 
     if (hide_news === true){
+        // Скрыть новости на главной
         let news_el = document.querySelector(".content-list__item_news-block");
         news_el.style.display = "none";
     }
     if (hide_sponsors === true){
+        // Скрыть колонку со спонсорами
         let sponsors_el = document.querySelector("div.default-block_sidebar:nth-child(1)");
         sponsors_el.style.display = "none";
     }
     if (hide_best_companies === true){
+        // Скрыть колонку с лучшими компаниями
         let companies_el = document.querySelector("#companies_rating");
         companies_el.style.display = "none";
     }
-    if (hide_partner_materials === true){
-        let partner_el = document.querySelector("li.content-list__item_post:nth-child(6)");
-        partner_el.style.display = "none";
+    if (hide_promo === true){
+        // Скрыть 'Курсы', 'Заказы', прочее
+        let promo_els = document.querySelectorAll(".promo-block");
+        for (const element of promo_els) {
+            element.parentNode.style.display = "none";
+        }
+        // Скрыть 'Минуточку внимания'
+        document.querySelector(".default-block").parentNode.style.display = "none";
     }
-    if (hide_block_vacancies === true){
-        let vacancies_el = document.querySelector(".promo-block_vacancies");
-        vacancies_el.parentElement.style.display = "none";
+    if (hide_post_body === true){
+        // Скрываем тело поста, оставляя только заголовок
+        let post_body_els = document.getElementsByClassName("post__body post__body_crop");
+        for (const element of post_body_els) {
+            element.style.display = "none";
+        }
     }
-
+    if (improve_post_title === true){
+        // Уменьшаем заголовок
+        let improve_post_title_els = document.querySelectorAll(".post__title_link");
+        console.log(improve_post_title_els);
+        for (const element of improve_post_title_els) {
+            element.style.fontSize = "20px";
+        }
+    }
 })();
