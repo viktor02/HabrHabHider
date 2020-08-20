@@ -7,6 +7,8 @@
 // @copyright    2020, Viktor Karpov
 // @license      MIT
 // @homepageURL  https://github.com/viktor02/HabrHider
+// @updateURL    https://github.com/viktor02/HabrHider/raw/master/HabrHider.user.js
+// @downloadURL  https://github.com/viktor02/HabrHider/raw/master/HabrHider.user.js
 // @match        https://habr.com/ru/top/*
 // @match        https://habr.com/ru/all/*
 // @grant        GM_getValue
