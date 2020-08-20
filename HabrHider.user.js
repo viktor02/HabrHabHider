@@ -1,13 +1,14 @@
 // ==UserScript==
 // @name         HabrHider
 // @namespace    http://vitka-k.ru
-// @version      0.2.2
+// @version      0.2.3
 // @description  Скрывайте посты от неугодных вам хабов и блогов на главной, новости, партнерские посты и спонсорские материалы!
 // @author       Viktor Karpov <vitka-k.ru>
 // @copyright    2020, Viktor Karpov
 // @license      MIT
 // @homepageURL  https://github.com/viktor02/HabrHider
-// @match        https://habr.com/ru/top/
+// @match        https://habr.com/ru/top/*
+// @match        https://habr.com/ru/all/*
 // @grant        GM_getValue
 // @grant        GM_setValue
 // @grant        GM_openInTab
@@ -17,7 +18,7 @@
 
 // Меню со ссылкой на гитхаб
 GM_registerMenuCommand('GitHub', () => {
-    GM_openInTab('https://github.com/viktor02/HabrHabHider', {active: true, insert: true});
+    GM_openInTab('https://github.com/viktor02/HabrHider', {active: true, insert: true});
 });
 
 // Меню с настройками
