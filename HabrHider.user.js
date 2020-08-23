@@ -11,6 +11,7 @@
 // @downloadURL  https://github.com/viktor02/HabrHider/raw/master/HabrHider.user.js
 // @match        https://habr.com/ru/top/*
 // @match        https://habr.com/ru/all/*
+// @match        https://habr.com/ru/
 // @grant        GM_getValue
 // @grant        GM_setValue
 // @grant        GM_openInTab
