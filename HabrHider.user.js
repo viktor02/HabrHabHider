@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         HabrHider
 // @namespace    http://vitka-k.ru
-// @version      0.2.4.2
+// @version      0.2.4.3
 // @description  Скрывайте посты от неугодных вам хабов и блогов на главной, новости, партнерские посты и спонсорские материалы!
 // @author       Viktor Karpov <vitka-k.ru>
 // @copyright    2020, Viktor Karpov
@@ -12,6 +12,7 @@
 // @match        https://habr.com/ru/top/*
 // @match        https://habr.com/ru/all/*
 // @match        https://habr.com/ru/
+// @match        https://habr.com/ru/feed/
 // @grant        GM_getValue
 // @grant        GM_setValue
 // @grant        GM_openInTab
@@ -145,7 +146,6 @@ let improve_post_title = GM_config.get('improve_post_title');
     if (improve_post_title === true){
         // Уменьшаем заголовок
         let improve_post_title_els = document.querySelectorAll(".post__title_link");
-        console.log(improve_post_title_els);
         for (const element of improve_post_title_els) {
             element.style.fontSize = "20px";
         }
